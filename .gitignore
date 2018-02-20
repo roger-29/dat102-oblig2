@@ -1,3 +1,6 @@
 # Bin files
-/bin
-/target
+*.class
+*.jar
+
+# Maven target
+Kode/*/target

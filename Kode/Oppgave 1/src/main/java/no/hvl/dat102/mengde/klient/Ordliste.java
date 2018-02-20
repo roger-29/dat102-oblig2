@@ -51,7 +51,6 @@ public class Ordliste {
 		while (!ordListeBegge.erTom()) {
 			hentStreng = ordListeBegge.fjernTilfeldig();
 			System.out.println(hentStreng);
-
 		}
 
 		// Lager snittet av de to ordlistene
@@ -80,6 +79,6 @@ public class Ordliste {
 
 		}
 
+		tastatur.close();
 	}
-
 }

@@ -4,7 +4,7 @@
 	<groupId>no.hvl.dat102</groupId>
 	<artifactId>mengde</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0</version>
+	<version>1.0.0</version>
 	<name>MengdeU</name>
 	<url>http://maven.apache.org</url>
 	<properties>

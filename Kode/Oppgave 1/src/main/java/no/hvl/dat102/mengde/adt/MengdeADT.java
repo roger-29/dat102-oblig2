@@ -49,7 +49,7 @@ public interface MengdeADT<T> {
 	boolean inneholder(T element);
 
 	/**
-	 * Tester om this-mengden og parameteren inneholder n�yaktig de samme
+	 * Tester om this-mengden og parameteren inneholder nøyaktig de samme
 	 * elementene
 	 * 
 	 * @param m2 er  mengden som testes
@@ -77,14 +77,13 @@ public interface MengdeADT<T> {
 	 * @return
 	 */
 	MengdeADT<T> snitt(MengdeADT<T> m2);
+
 	/**
 	 * 
 	 * @param m2
 	 * @return
 	 */
-
 	MengdeADT<T> differens(MengdeADT<T> m2);
-	
 	
 	/**
 	 * 
@@ -94,15 +93,10 @@ public interface MengdeADT<T> {
 	public boolean undermengde(MengdeADT<T> m2);
 
 	/**
-	 * Oppretter et 'oppramsobjekt' som kan brukes til � gjennomg� alle
+	 * Oppretter et 'oppramsobjekt' som kan brukes til å gjennomgå alle
 	 * elementer i mengden etter tur en gang
 	 * 
 	 * @return et oppramsobjekt
 	 */
-	
-	
 	Iterator<T> oppramser();
-
-	
-
-}// ADT
+}

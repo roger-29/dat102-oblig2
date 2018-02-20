@@ -5,7 +5,7 @@ import no.hvl.dat102.mengde.kjedet.KjedetMengde;
 public class KlientBingo {
 	// Oppretter 2 mengder med 75 bingokuler i hver.
 	// Tester om en spesiell bingokule er med i den ene mengden,
-	// og om de to mengdene er n�yaktig like.
+	// og om de to mengdene er nøyaktig like.
 
 	public static void main(String[] a) {
 		final int ANTALL_BALLER = 75;

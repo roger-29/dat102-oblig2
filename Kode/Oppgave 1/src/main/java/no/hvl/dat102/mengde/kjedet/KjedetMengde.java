@@ -129,10 +129,17 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public boolean equals(MengdeADT<T> m2) {
-		boolean likeMengder = true;
 		T element = null;
-		//Fyll ut
-		return likeMengder;
+		T neste = null;
+		T denne = null;
+		while (neste != null) {
+			if (m2.inneholder(denne)) {
+				denne = neste;
+				//neste = denne.getElement();
+			}
+		}
+		//
+		return true;
 	}
 
 	@Override
@@ -163,5 +170,4 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 		start = nyNode;
 		antall++;
 	}
-
-}// class
+}

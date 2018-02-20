@@ -65,8 +65,8 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public T fjern(T element) {
-		// S�ker etter og fjerner element.Retur med null ved ikke-funn
-		
+		// Søker etter og fjerner element. Retur med null ved ikke-funn
+
 		boolean funnet = false;
 		T svar = null;
 		/*
@@ -74,39 +74,38 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		 */
 		return svar;
 	}
-/* Lite effektiv!
-	@Override
-	public MengdeADT<T> union(MengdeADT<T> m2) {
-		TabellMengde<T> begge = new TabellMengde<T>();
-		for (int i = 0; i < antall; i++) {
-			begge.leggTil(tab[i]);
-		}
-		Iterator<T> teller = m2.oppramser();
 
-		while (teller.hasNext()) {
-			begge.leggTil(teller.next());
-		}
-		return (MengdeADT<T>)begge;
-	}
-	*/
-	@Override
+	/* Lite effektiv!
+		@Override
+		public MengdeADT<T> union(MengdeADT<T> m2) {
+			TabellMengde<T> begge = new TabellMengde<T>();
+			for (int i = 0; i < antall; i++) {
+				begge.leggTil(tab[i]);
+			}
+			Iterator<T> teller = m2.oppramser();
 	
+			while (teller.hasNext()) {
+				begge.leggTil(teller.next());
+			}
+			return (MengdeADT<T>)begge;
+		}
+		*/
+	@Override
+
 	public MengdeADT<T> union(MengdeADT<T> m2) {
 		MengdeADT<T> begge = new TabellMengde<T>();
-		T element = null;		
+		T element = null;
 		/*
 		 * Fyll ut
 		 * 	
-		 */	
+		 */
 		return begge;
 	}//
-	
-	
 
 	@Override
 	public MengdeADT<T> snitt(MengdeADT<T> m2) {
 		MengdeADT<T> snittM = new TabellMengde<T>();
-		T element= null;
+		T element = null;
 		/*
 		 * Fyll ut
 		 */
@@ -123,7 +122,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 			if (!m2.inneholder(element))
 				 ((TabellMengde<T>) differensM).settInn(element);
 		*/
-		
+
 		return differensM;
 	}
 
@@ -148,13 +147,15 @@ public class TabellMengde<T> implements MengdeADT<T> {
 
 	@Override
 	public boolean equals(MengdeADT<T> m2) {
-		boolean likeMengder = true;
-		T element;
-
-		/*
-		 * Fyll ut
-		 */
-		return likeMengder;
+		if (this.antall() == m2.antall()) {
+			for (int i = 0; i < this.antall(); i++) {
+				if (!m2.inneholder(this.tab[i])) {
+					return false;
+				}
+			}
+			return true;
+		}
+		return false;
 	}
 
 	@Override
@@ -163,7 +164,6 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		while (teller.hasNext())
 			leggTil(teller.next());
 	}
-	
 
 	@Override
 	public boolean undermengde(MengdeADT<T> m2) {
@@ -176,6 +176,4 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	public Iterator<T> oppramser() {
 		return new TabellIterator<T>(tab, antall);
 	}
-
-
-}// class
+}
