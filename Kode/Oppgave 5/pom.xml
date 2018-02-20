@@ -29,7 +29,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>no.hvl.dat102.oppg5.klient</mainClass>
+							<mainClass>no.hvl.dat102.oppg5.Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
