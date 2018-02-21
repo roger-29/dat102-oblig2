@@ -10,5 +10,5 @@
 
 ## Gjennomført av
 
-* [Arne Olai Molland](http://github.com/arnemolland) | 571726
-* [Sondre Gjellestad](http://github.com/sondregj) | 571541
+- [Arne Olai Molland](http://github.com/arnemolland) | 571726
+- [Sondre Gjellestad](http://github.com/sondregj) | 571541

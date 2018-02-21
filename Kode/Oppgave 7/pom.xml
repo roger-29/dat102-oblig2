@@ -4,7 +4,7 @@
 	<groupId>no.hvl.dat102</groupId>
 	<artifactId>oppg7</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.0</version>
+	<version>1.0</version>
 	<name>Oppgave 7</name>
 	<url>http://maven.apache.org</url>
 	<properties>
@@ -29,7 +29,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>no.hvl.dat102.oppg7.Main</mainClass>
+							<mainClass>no.hvl.dat102.oppg7.KjorePlan1</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
