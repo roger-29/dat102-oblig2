@@ -44,25 +44,22 @@ public class Person implements Comparable<Person> {
 
 	@Override
 	public int compareTo(Person denAndre) {
-		if (this.getFodselsaar() > denAndre.getFodselsaar()) {
-			return 1;
-		} else if (this.getFodselsaar() < denAndre.getFodselsaar()) {
-			return -1;
-		} else if (this.getFodselsaar() == denAndre.getFodselsaar()) {
-			if (this.getEtternavn() < denAndre.getEtternavn()) {
-				return 1;
-			} else if (this.getEtternavn() > denAndre.getEtternavn()) {
-				return -1;
-			} else if (this.getEtternavn() == denAndre.getEtternavn()) {
-				if (this.getFornavn() < denAndre.getFornavn()) {
-					return 1;
-				} else if (this.getFornavn() > denAndre.getFornavn()) {
-					return -1;
-				} else if (this.getFornavn() == denAndre.getFornavn()) {
-					return 0;
-				}
-			}
-		}
+		final int FØR = -1;
+		final int LIK = 0;
+		final int ETTER = 1;
+
+		if (this == denAndre) {return LIK;}
+
+		if (this.getFodselsaar() < denAndre.getFodselsaar()) {return FØR;}
+		if (this.getFodselsaar() > denAndre.getFodselsaar()) {return ETTER;}
+
+		int etternavnCmp = this.getEtternavn().compareTo(denAndre.getEtternavn());
+		if (etternavnCmp != LIK) {return etternavnCmp;}
+
+		int fornavnCmp = this.getFornavn().compareTo(denAndre.getEtternavn());
+		if (fornavnCmp != LIK) {return fornavnCmp;}
+
+		return LIK;
 	}
 
 	@Override
