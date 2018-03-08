@@ -2,6 +2,8 @@ package no.hvl.dat102.oppg7;
 
 import java.util.Scanner;
 
+import no.hvl.dat102.oppg7.Queue.CircularQueue;
+
 // Algoritmen implementert med vanlig kø
 public class KjorePlan1 {
 
@@ -10,6 +12,7 @@ public class KjorePlan1 {
 		// Tømmer konsollvindu
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
+		System.out.println();
 
 		// Initialiserer Scanner
 		Scanner sc = new Scanner(System.in);
@@ -21,7 +24,7 @@ public class KjorePlan1 {
 		System.out.println("Kjøring med kø");
 
 		// 1 | Opprett Jobbsamling og les en fil inn i køen
-		Jobbsamling<Jobb> samling = new Jobbsamling<Jobb>();
+		Jobbsamling<Jobb, CircularQueue<Jobb>> samling = new Jobbsamling<Jobb,CircularQueue<Jobb>>();
 
 		System.out.println("Leser inn CPU-jobber fra fil");
 		samling.lesFraFil(filnavn);

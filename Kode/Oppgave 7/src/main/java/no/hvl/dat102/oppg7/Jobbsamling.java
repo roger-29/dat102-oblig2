@@ -2,7 +2,7 @@ package no.hvl.dat102.oppg7;
 
 import java.io.*;
 
-public class Jobbsamling<T> {
+public class Jobbsamling<T, S> {
 
 	private int tabLength;
 	private Jobb[] tab;

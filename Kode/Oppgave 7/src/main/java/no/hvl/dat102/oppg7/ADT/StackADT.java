@@ -1,9 +1,11 @@
 package no.hvl.dat102.oppg7.ADT;
 
+import java.util.EmptyStackException;
+
 public interface StackADT<T> {
 	boolean push(T element);
 
-	boolean pop();
+	boolean pop() throws EmptyStackException;
 
 	T getFirst();
 

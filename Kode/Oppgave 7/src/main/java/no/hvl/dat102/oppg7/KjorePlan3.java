@@ -1,13 +1,13 @@
 package no.hvl.dat102.oppg7;
 
 import java.util.Scanner;
+import no.hvl.dat102.oppg7.Queue.CircularQueue;
 
-import no.hvl.dat102.oppg7.OrdnetListe.KjedetOrdnetListe;
-
-// Algoritmen implementert med ordnet liste
-public class KjorePlan2 {
+// Algoritmen implementert med Kø A (ordnet liste) og Kø B (sirkulær kø)
+public class KjorePlan3 {
 
 	public static void main(String[] args) {
+		
 		// Tømmer konsollvindu
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
@@ -22,11 +22,14 @@ public class KjorePlan2 {
 		System.out.println("Kjøring med kø");
 
 		// 1 | Opprett Jobbsamling og les en fil inn i køen
-		Jobbsamling<Jobb, KjedetOrdnetListe<Jobb>> samling = new Jobbsamling<Jobb, KjedetOrdnetListe<Jobb>>();
+		//Jobbsamling<Jobb> samling = new Jobbsamling<Jobb>();
 
 		System.out.println("Leser inn CPU-jobber fra fil");
-		samling.lesFraFil(filnavn);
+		//samling.lesFraFil(filnavn);
 
+		CircularQueue<Jobb> queueB = new CircularQueue<Jobb>();
+
+		queueB.enqueue(new Jobb());
 
 		sc.close();
 		System.exit(0);
