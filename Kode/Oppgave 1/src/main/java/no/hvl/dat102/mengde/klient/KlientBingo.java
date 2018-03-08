@@ -37,6 +37,5 @@ public class KlientBingo {
 		if (!minMengde1.equals(minMengde2)) {
 			System.out.println("Ulike mengder");
 		}
-
 	}
-}// class
+}

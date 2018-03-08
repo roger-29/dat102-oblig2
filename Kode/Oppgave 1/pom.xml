@@ -29,7 +29,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>no.hvl.dat102.mengde.klient</mainClass>
+							<mainClass>no.hvl.dat102.mengde.klient.KlientBingo</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

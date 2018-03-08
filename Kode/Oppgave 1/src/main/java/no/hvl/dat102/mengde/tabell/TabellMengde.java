@@ -21,6 +21,7 @@ public class TabellMengde<T> implements MengdeADT<T> {
 		antall = 0;
 		tab = (T[]) (new Object[start]);
 	}
+	
 
 	@Override
 	public int antall() {
@@ -66,12 +67,15 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	@Override
 	public T fjern(T element) {
 		// Søker etter og fjerner element. Retur med null ved ikke-funn
-
-		boolean funnet = false;
 		T svar = null;
-		/*
-		 * Fyll ut
-		 */
+		for (int i = 0; i < this.antall; i++) {
+			if (tab[i].equals(element)) {
+				svar = tab[i];
+				tab[i] = tab[antall - 1];
+				antall--;
+			}
+		}
+		
 		return svar;
 	}
 
