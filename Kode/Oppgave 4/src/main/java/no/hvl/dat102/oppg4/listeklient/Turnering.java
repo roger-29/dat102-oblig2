@@ -38,5 +38,7 @@ public class Turnering {
 			System.out.println("Spill " + antall + " er " + lag1 + " mot " + lag2);
 			System.out.println(" vinneren skal spille  mot vinneren av spill" + (((antallLag/2) + 1) - antall) + "\n");
 		}
+
+		in.close();
 	}
 }

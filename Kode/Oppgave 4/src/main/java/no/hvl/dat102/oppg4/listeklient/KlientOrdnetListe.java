@@ -41,7 +41,7 @@ public final class KlientOrdnetListe {
 			System.out.print("Oppgi flere navn [J/N]?:");
 			svar = in.nextLine();
 
-		} while (svar.equals("j") || svar.equals("J"));
+		} while (svar.toLowerCase().equals("j"));
 
 		// Skriver navnene ut i stigende ordning
 		System.out.println("\n\nNavnelisten i stigende ordning:");
@@ -57,6 +57,6 @@ public final class KlientOrdnetListe {
 			System.out.print(navneListe2.fjernSiste() + " ");
 		}
 
+		in.close();
 	}
-
 }
