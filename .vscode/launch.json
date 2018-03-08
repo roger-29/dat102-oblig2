@@ -1,0 +1,129 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+    {
+        "type": "java",
+        "name": "Debug (Launch)",
+        "request": "launch",
+        "cwd": "${workspaceFolder}",
+        "console": "internalConsole",
+        "stopOnEntry": false,
+        "mainClass": "no.hvl.dat102.oppg5.Main",
+        "args": ""
+    },
+        {
+            "name": "Java",
+            "type": "java",
+            "request": "launch",
+            "stopOnEntry": true,
+            "jdkPath": "${env:JAVA_HOME}/bin",
+            "cwd": "${fileDirname}",
+            "startupClass": "${fileBasenameNoExtension}",
+            "classpath": [
+                ".",
+                "${fileDirname}"
+            ]
+        },
+        {
+            "name": "Java Console App",
+            "type": "java",
+            "request": "launch",
+            "stopOnEntry": true,
+            "jdkPath": "${env:JAVA_HOME}/bin",
+            "cwd": "${fileDirname}",
+            "startupClass": "${fileBasenameNoExtension}",
+            "classpath": [
+                ".",
+                "${fileDirname}"
+            ],
+            "externalConsole": true
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-KlientBingo<mengde>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "no.hvl.dat102.mengde.klient.KlientBingo",
+            "projectName": "mengde",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Ordliste<mengde>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "no.hvl.dat102.mengde.klient.Ordliste",
+            "projectName": "mengde",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-KlientOrdnetListe<oppg4>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "no.hvl.dat102.oppg4.listeklient.KlientOrdnetListe",
+            "projectName": "oppg4",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-KlientTurnering<oppg4>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "no.hvl.dat102.oppg4.listeklient.KlientTurnering",
+            "projectName": "oppg4",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Main<oppg5>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "no.hvl.dat102.oppg5.Main",
+            "projectName": "oppg5",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-KjorePlan1<oppg7>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "no.hvl.dat102.oppg7.KjorePlan1",
+            "projectName": "oppg7",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-KjorePlan2<oppg7>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "no.hvl.dat102.oppg7.KjorePlan2",
+            "projectName": "oppg7",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Attach)",
+            "request": "attach",
+            "hostName": "localhost",
+            "port": 0
+        }
+    ]
+}
