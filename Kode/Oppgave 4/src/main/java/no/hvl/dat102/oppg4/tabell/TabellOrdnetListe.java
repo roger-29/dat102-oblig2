@@ -1,6 +1,5 @@
 package no.hvl.dat102.oppg4.tabell;
-
-import no.hvl.dat102.oppg4.adt.OrdnetListeADT;
+import no.hvl.dat102.oppg4.adt.*;
 
 public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeADT<T> {
 	
@@ -55,7 +54,17 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	
     @Override
 	public void leggTil(T element) {
-    	   	
+		int count = 0;
+		while(count>=0)
+		{
+			if(element.compareTo(liste[count])> 0)
+			count++;
+			else
+			{
+			liste[count] = element;
+			count = -1;
+			}
+		}
 		//...Fyll ut
 	}
 
