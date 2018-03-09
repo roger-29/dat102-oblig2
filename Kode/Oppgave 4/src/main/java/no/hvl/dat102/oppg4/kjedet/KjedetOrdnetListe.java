@@ -1,10 +1,10 @@
 package no.hvl.dat102.oppg4.kjedet;
 
 import no.hvl.dat102.oppg4.adt.*;
+
 /**
  * 
- * @param <T>
- *            elementtypen
+ * @param <T> elementtypen
  */
 public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeADT<T> {
 	private int antall;
@@ -22,33 +22,61 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	@Override
 	public T fjernFoerste() {
 		T svar = null;
-		//...Fyll ut
-		return svar;
+
+		if (!erTom()) {
+			svar = foerste.getElement();
+			foerste = foerste.getNeste();
+			antall--;
+			return svar;
+		}
+
+		return null;
 	}
 
 	@Override
 	public T fjernSiste() {
 		T svar = null;
-		//...Fyll ut
+
+		if (erTom()) return null;
+
+		svar = siste();
+		antall--;
+
+		if (antall() == 1) {
+			foerste = siste = null;
+			return svar;
+		}
+
+		if (antall() == 2) {
+			siste = foerste;
+			foerste.setNeste(null);
+			return svar;
+		}
+
+		LinearNode<T> denne = foerste;
+
+		for (int i = 0; i < antall() - 1; i++) {
+			denne = denne.getNeste();
+		}
+
+		denne.setNeste(null);
+		siste = denne;
+		
 		return svar;
 	}
 
 	@Override
 	public T foerste() {
-		T svar = null;
-		if (!erTom()) {
-			svar = foerste.getElement();
-		}
-		return svar;
+		if (erTom()) return null;
+		
+		return foerste.getElement();
 	}
 
 	@Override
 	public T siste() {
-		T svar = null;
-		if (!erTom()) {
-			svar = siste.getElement();
-		}
-		return svar;
+		if (erTom()) return null;
+		
+		return siste.getElement();
 	}
 
 	@Override
@@ -63,10 +91,57 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 
 	@Override
 	public void leggTil(T element) {
+		if (!(element instanceof Comparable)) {
+			System.out.println("Kan ikke legge til elementer som ikke er Comparable.");
+			return;
+		}
 
-		//...Fyll ut
+		Comparable<T> comparableElement = (Comparable<T>) element;
+
+		LinearNode<T> nyNode = new LinearNode<T>(element);
+		
+
+		if (antall() == 0) {
+			foerste = siste = nyNode;
+			antall++;
+			return;
+		}
+
+		if (antall() == 1) {
+			if (comparableElement.compareTo(foerste.getElement()) > 0) {
+				foerste.setNeste(nyNode);
+				siste = nyNode;
+			} else {
+				nyNode.setNeste(foerste);
+				siste = foerste;
+				foerste = nyNode;
+			}
+			antall++;
+			return;
+		}
+
+
+		LinearNode<T> current = foerste;
+
+		int indeks = 0;
+		while ((indeks < antall() - 1) && (element.compareTo(current.getElement()) > 0)) {
+			current = current.getNeste();
+			indeks++;
+		}
+
+		if (indeks == 0) {
+			nyNode.setNeste(current);
+			foerste = nyNode;
+		} else if (indeks == antall()) {
+			siste.setNeste(nyNode);
+			siste = nyNode;
+		} else {
+			nyNode.setNeste(current);
+			//previous.setNeste(nyNode);
+		}
+		
+		antall++;
 	}
-
 
 	@Override
 	public T fjern(T element) {
@@ -79,7 +154,7 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		if (denne != null && element.equals(denne.getElement())) { // funnet
 			antall--;
 			svar = denne.getElement();
-			if (forrige == null) {     // F�rste element
+			if (forrige == null) { // Første element
 				foerste = foerste.getNeste();
 				if (foerste == null) { // Tom liste
 					siste = null;
@@ -109,4 +184,4 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		return resultat;
 	}
 
-}// class
+}

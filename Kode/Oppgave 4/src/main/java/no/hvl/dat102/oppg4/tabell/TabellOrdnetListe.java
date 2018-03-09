@@ -1,6 +1,7 @@
 package no.hvl.dat102.oppg4.tabell;
 
 import no.hvl.dat102.oppg4.adt.OrdnetListeADT;
+import java.util.Arrays;
 
 public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeADT<T> {
 	
@@ -19,33 +20,47 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	}
 
 	@Override
-	public T fjernSiste() { // Gjort selv
-		T resultat = liste[bak - 1];
-		liste[bak - 1] = null;
+	public T fjernSiste() {
 		bak--;
-		return resultat;
+		return liste[bak];
 	}
 
 	@Override
 	public T fjernFoerste() {
 		T resultat = null;
-		//... Fyll ut
+		int indeks = 0;
+
+		if (erTom()) return null;
+
+		resultat = liste[0];
+
+		while (indeks < bak - 1) {
+			liste[indeks] = liste[indeks + 1];
+			indeks++;
+		}
+
+		bak--;
+
 		return resultat;
 	}
 
-     @Override
+    @Override
 	public T foerste() {
-		return !erTom() ? liste[0] : null;
+		T resultat = null;
+		if (!erTom()) resultat = liste[0];
+		return resultat;
 	}
 
 	@Override
 	public T siste() {
-		return !erTom() ? liste[bak - 1] : null;
+		T resultat = null;
+		if (!erTom()) resultat = liste[bak];
+		return resultat;
 	}
 
 	@Override
 	public boolean erTom() {
-		return bak == 0;
+		return (bak == 0);
 	}
 
 	@Override
@@ -55,8 +70,9 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	
     @Override
 	public void leggTil(T element) {
-    	   	
-		//...Fyll ut
+		liste[bak] = element;
+		bak++;
+		Arrays.sort(liste, 0, bak);
 	}
 
 	
@@ -67,15 +83,30 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 
 	@Override
 	public T fjern(T element) {
-		// ...Fyll ut
-		return element;
-		
+		T el = null;
+
+		int indeks = finn(element);
+
+		if (indeks != IKKE_FUNNET) {
+			el = liste[indeks];
+			while (indeks < bak - 1) {
+				liste[indeks] = liste[indeks + 1];
+				indeks++;
+			}
+			bak--;
+		}
+
+		return el;
 	}		
 
 	private int finn(T el) {
-		int i = 0, resultat = IKKE_FUNNET;
-		//...Fyll ut
-		return resultat;
+		for (int i = 0; i < bak; i++) {
+			if (liste[i].equals(el)) {
+				return i;
+			}
+		}
+
+		return IKKE_FUNNET;
 	}
 
 	public String toString() {
@@ -84,12 +115,13 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		for (int i = 0; i < bak; i++) {
 			resultat = resultat + liste[i].toString() + "\n";
 		}
+
 		return resultat;
 	}
 
 
 	private void utvid() {
-		T[] hjelpeTabell = (T[]) (new Object[liste.length * 2]);
+		T[] hjelpeTabell = (T[]) (new Comparable[liste.length * 2]);
 
 		for (int i = 0; i < liste.length; i++){
 			hjelpeTabell[i] = liste[i];
@@ -97,4 +129,5 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		
 		liste = hjelpeTabell;
 	}
+
 }
