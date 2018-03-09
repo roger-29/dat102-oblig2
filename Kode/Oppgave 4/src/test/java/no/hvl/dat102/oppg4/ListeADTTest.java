@@ -134,7 +134,7 @@ public class ListeADTTest {
 		assertTrue(liste.inneholder(e0));
 		assertTrue(liste.inneholder(e1));
 		assertTrue(liste.inneholder(e2));
-		//assertTrue(liste.inneholder(e3));
+		assertTrue(liste.inneholder(e3));
 		assertTrue(liste.inneholder(e4));
 		assertFalse(liste.inneholder(e5));
 

@@ -20,6 +20,13 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	}
 
 	@Override
+	public void leggTil(T element) {
+		liste[bak] = element;
+		bak++;
+		Arrays.sort(liste, 0, bak);
+	}
+
+	@Override
 	public T fjernSiste() {
 		bak--;
 		return liste[bak];
@@ -42,43 +49,6 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		bak--;
 
 		return resultat;
-	}
-
-    @Override
-	public T foerste() {
-		T resultat = null;
-		if (!erTom()) resultat = liste[0];
-		return resultat;
-	}
-
-	@Override
-	public T siste() {
-		T resultat = null;
-		if (!erTom()) resultat = liste[bak];
-		return resultat;
-	}
-
-	@Override
-	public boolean erTom() {
-		return (bak == 0);
-	}
-
-	@Override
-	public int antall() {
-		return bak;
-	}
-	
-    @Override
-	public void leggTil(T element) {
-		liste[bak] = element;
-		bak++;
-		Arrays.sort(liste, 0, bak);
-	}
-
-	
-	@Override
-	public boolean inneholder(T element) {
-		return (finn(element) != IKKE_FUNNET);
 	}
 
 	@Override
@@ -107,6 +77,35 @@ public class TabellOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		}
 
 		return IKKE_FUNNET;
+	}
+
+    @Override
+	public T foerste() {
+		T resultat = null;
+		if (!erTom()) resultat = liste[0];
+		return resultat;
+	}
+
+	@Override
+	public T siste() {
+		T resultat = null;
+		if (!erTom()) resultat = liste[bak];
+		return resultat;
+	}
+
+	@Override
+	public boolean erTom() {
+		return (bak == 0);
+	}
+
+	@Override
+	public int antall() {
+		return bak;
+	}
+	
+	@Override
+	public boolean inneholder(T element) {
+		return (finn(element) != IKKE_FUNNET);
 	}
 
 	public String toString() {

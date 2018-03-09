@@ -20,52 +20,6 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	}
 
 	@Override
-	public T fjernFoerste() {
-		T svar = null;
-
-		if (!erTom()) {
-			svar = foerste.getElement();
-			foerste = foerste.getNeste();
-			antall--;
-			return svar;
-		}
-
-		return null;
-	}
-
-	@Override
-	public T fjernSiste() {
-		T svar = null;
-
-		if (erTom()) return null;
-
-		svar = siste();
-		antall--;
-
-		if (antall() == 1) {
-			foerste = siste = null;
-			return svar;
-		}
-
-		if (antall() == 2) {
-			siste = foerste;
-			foerste.setNeste(null);
-			return svar;
-		}
-
-		LinearNode<T> denne = foerste;
-
-		for (int i = 0; i < antall() - 1; i++) {
-			denne = denne.getNeste();
-		}
-
-		denne.setNeste(null);
-		siste = denne;
-		
-		return svar;
-	}
-
-	@Override
 	public T foerste() {
 		if (erTom()) return null;
 		
@@ -120,27 +74,20 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 			return;
 		}
 
-
 		LinearNode<T> current = foerste;
+		antall++;
 
-		int indeks = 0;
-		while ((indeks < antall() - 1) && (element.compareTo(current.getElement()) > 0)) {
+		while ((current.getNeste() != null) && (element.compareTo(current.getElement()) > 0)) {
 			current = current.getNeste();
-			indeks++;
 		}
 
-		if (indeks == 0) {
-			nyNode.setNeste(current);
-			foerste = nyNode;
-		} else if (indeks == antall()) {
-			siste.setNeste(nyNode);
+		if (current.getNeste() == null) {
+			current.setNeste(nyNode);
 			siste = nyNode;
 		} else {
-			nyNode.setNeste(current);
-			//previous.setNeste(nyNode);
+			nyNode.setNeste(current.getNeste());
+			current.setNeste(nyNode);
 		}
-		
-		antall++;
 	}
 
 	@Override
@@ -170,6 +117,52 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 	}
 
 	@Override
+	public T fjernFoerste() {
+		T svar = null;
+
+		if (!erTom()) {
+			svar = foerste.getElement();
+			foerste = foerste.getNeste();
+			antall--;
+			return svar;
+		}
+
+		return null;
+	}
+
+	@Override
+	public T fjernSiste() {
+		T svar = null;
+
+		if (erTom()) return null;
+
+		svar = siste();
+		antall--;
+
+		if (antall() == 1) {
+			foerste = siste = null;
+			return svar;
+		}
+
+		if (antall() == 2) {
+			siste = foerste;
+			foerste.setNeste(null);
+			return svar;
+		}
+
+		LinearNode<T> denne = foerste;
+
+		for (int i = 0; i < antall() - 1; i++) {
+			denne = denne.getNeste();
+		}
+
+		denne.setNeste(null);
+		siste = denne;
+		
+		return svar;
+	}
+
+	@Override
 	public boolean inneholder(T element) {
 		LinearNode<T> denne = foerste;
 		boolean resultat = false;
@@ -183,5 +176,4 @@ public class KjedetOrdnetListe<T extends Comparable<T>> implements OrdnetListeAD
 		} // ikke-funn
 		return resultat;
 	}
-
 }
