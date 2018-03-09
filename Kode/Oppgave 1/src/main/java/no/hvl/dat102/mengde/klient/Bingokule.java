@@ -30,7 +30,7 @@ public class Bingokule {
 	 **/
 	@Override
 	public boolean equals(Object k2) {
-		Bingokule b2 = (Bingokule) k2; //N�dvendig typekonvertering
+		Bingokule b2 = (Bingokule) k2; //Nødvendig typekonvertering
 		return (tall == b2.tall && bokstav == b2.bokstav);
 	}
 

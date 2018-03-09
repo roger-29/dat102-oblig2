@@ -2,6 +2,8 @@ package no.hvl.dat102.mengde.klient;
 
 import no.hvl.dat102.mengde.adt.MengdeADT;
 import no.hvl.dat102.mengde.kjedet.KjedetMengde;
+import no.hvl.dat102.mengde.tabell.TabellMengde;
+
 import java.util.Scanner;
 
 public class Ordliste {
@@ -11,7 +13,7 @@ public class Ordliste {
 	 */
 	public static void main(String[] args) {
 
-		MengdeADT<String> ordListe1 = new KjedetMengde<String>();
+		MengdeADT<String> ordListe1 = new TabellMengde<String>();
 
 		String[] ord = { "God", "dag", "Hans", "Hansen", "Hansaby", "Olsen", "Ole", "buss", "rute", "Bergen" };
 
@@ -21,7 +23,7 @@ public class Ordliste {
 		for (int i = 0; i < ord.length; i++) {
 			ordListe1.leggTil(ord[i]);
 		}
-		MengdeADT<String> ordListe2 = new KjedetMengde<String>();
+		MengdeADT<String> ordListe2 = new TabellMengde<String>();
 
 		System.out.print("Oppgi en streng, avslutt med zzz :");
 		String streng = tastatur.nextLine();
@@ -42,11 +44,11 @@ public class Ordliste {
 		} // while
 
 		// Lager unionen av de to ordlistene
-		MengdeADT<String> ordListeBegge = new KjedetMengde<String>();
+		MengdeADT<String> ordListeBegge = new TabellMengde<String>();
 
 		ordListeBegge = ordListe1.union(ordListe2);
 
-		System.out.println("Utskrift av unionen av begge ordlistene");
+		System.out.println("\nUtskrift av unionen av begge ordlistene");
 		String hentStreng = "";
 		while (!ordListeBegge.erTom()) {
 			hentStreng = ordListeBegge.fjernTilfeldig();
@@ -54,11 +56,11 @@ public class Ordliste {
 		}
 
 		// Lager snittet av de to ordlistene
-		MengdeADT<String> ordListeFelles = new KjedetMengde<String>();
+		MengdeADT<String> ordListeFelles = new TabellMengde<String>();
 
 		ordListeFelles = ordListe1.snitt(ordListe2);
 
-		System.out.println("Utskrift av snittet av begge ordlistene");
+		System.out.println("\nUtskrift av snittet av begge ordlistene");
 		hentStreng = "";
 		while (!ordListeFelles.erTom()) {
 			hentStreng = ordListeFelles.fjernTilfeldig();
@@ -67,11 +69,11 @@ public class Ordliste {
 		}
 
 		// Lager differansen av de to ordlistene
-		MengdeADT<String> ordListeDiff = new KjedetMengde<String>();
+		MengdeADT<String> ordListeDiff = new TabellMengde<String>();
 
 		ordListeDiff = ordListe1.differens(ordListe2);
 
-		System.out.println("Utskrift av differensen av begge ordlistene");
+		System.out.println("\nUtskrift av differensen av begge ordlistene");
 		hentStreng = "";
 		while (!ordListeDiff.erTom()) {
 			hentStreng = ordListeDiff.fjernTilfeldig();
