@@ -67,16 +67,16 @@ public class TabellMengde<T> implements MengdeADT<T> {
 	@Override
 	public T fjern(T element) {
 		// Søker etter og fjerner element. Retur med null ved ikke-funn
-		T svar = null;
 		for (int i = 0; i < this.antall; i++) {
 			if (tab[i].equals(element)) {
-				svar = tab[i];
+				T svar = tab[i];
 				tab[i] = tab[antall - 1];
 				antall--;
+				return svar;
 			}
 		}
 		
-		return svar;
+		return null;
 	}
 
 	/* Lite effektiv!
@@ -94,40 +94,60 @@ public class TabellMengde<T> implements MengdeADT<T> {
 			return (MengdeADT<T>)begge;
 		}
 		*/
-	@Override
 
+	
+	@Override
 	public MengdeADT<T> union(MengdeADT<T> m2) {
-		MengdeADT<T> begge = new TabellMengde<T>();
+		MengdeADT<T> mengde = new TabellMengde<T>();
 		T element = null;
-		/*
-		 * Fyll ut
-		 * 	
-		 */
-		return begge;
-	}//
+		
+		Iterator<T> itr1 = this.oppramser();
+		Iterator<T> itr2 = m2.oppramser();
+
+		while(itr1.hasNext()) {
+			((TabellMengde<T>)mengde).settInn(itr1.next());
+		}
+
+		while(itr2.hasNext()) {
+			element = itr2.next();
+			if(!mengde.inneholder(element)) {
+				((TabellMengde<T>)mengde).settInn(element);
+			}
+		}
+		
+		return mengde;
+	}
 
 	@Override
 	public MengdeADT<T> snitt(MengdeADT<T> m2) {
-		MengdeADT<T> snittM = new TabellMengde<T>();
+		MengdeADT<T> mengde = new TabellMengde<T>();
 		T element = null;
-		/*
-		 * Fyll ut
-		 */
-		return snittM;
+		
+		Iterator<T> itr = m2.oppramser();
+
+		while(itr.hasNext()) {
+			element = itr.next();
+			if (this.inneholder(element))		 
+				((TabellMengde<T>)mengde).settInn(element);
+		}
+
+		return mengde;
 	}
 
 	@Override
 	public MengdeADT<T> differens(MengdeADT<T> m2) {
-		MengdeADT<T> differensM = new TabellMengde<T>();
+		MengdeADT<T> mengde = new TabellMengde<T>();
 		T element;
-		/*
-		 * Fyll ut
-		 
-			if (!m2.inneholder(element))
-				 ((TabellMengde<T>) differensM).settInn(element);
-		*/
 
-		return differensM;
+		Iterator<T> itr = this.oppramser();
+		
+		while(itr.hasNext()) {
+			element = itr.next();
+			if(!m2.inneholder(element))
+				((TabellMengde<T>)mengde).settInn(element);
+		}
+
+		return mengde;
 	}
 
 	private void settInn(T element) {

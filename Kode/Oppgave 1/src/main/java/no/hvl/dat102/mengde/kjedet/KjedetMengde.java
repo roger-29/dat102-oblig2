@@ -90,12 +90,22 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	@Override
 	public MengdeADT<T> union(MengdeADT<T> m2) {
 		MengdeADT<T> mengde = new KjedetMengde<T>();
-		LinearNode<T> aktuell = start;
 		T element = null;
+		
+		Iterator<T> itr1 = this.oppramser();
+		Iterator<T> itr2 = m2.oppramser();
 
-		/*
-		 * Fyll ut
-		 */
+		while(itr1.hasNext()) {
+			((KjedetMengde<T>)mengde).settInn(itr1.next());
+		}
+
+		while(itr2.hasNext()) {
+			element = itr2.next();
+			if(!mengde.inneholder(element)) {
+				((KjedetMengde<T>)mengde).settInn(element);
+			}
+		}
+
 		return mengde;
 	}
 
@@ -103,23 +113,32 @@ public class KjedetMengde<T> implements MengdeADT<T> {
 	public MengdeADT<T> snitt(MengdeADT<T> m2) {
 		MengdeADT<T> mengde = new KjedetMengde<T>();
 		T element;
-		/* Fyll ut...
-		 * 
+
+		Iterator<T> itr = m2.oppramser();
+
+		while(itr.hasNext()) {
+			element = itr.next();
 			if (this.inneholder(element))		 
-				((KjedetMengde<T>) snittM).settInn(element);
-		*/
+				((KjedetMengde<T>)mengde).settInn(element);
+		}
+
 		return mengde;
 	}
 
 	@Override
 	public MengdeADT<T> differens(MengdeADT<T> m2) {
-		MengdeADT<T> differensM = new KjedetMengde<T>();
+		MengdeADT<T> mengde = new KjedetMengde<T>();
 		T element;
-		/*Fyll ut
-		 * 
-		 */
+		
+		Iterator<T> itr = this.oppramser();
+		
+		while(itr.hasNext()) {
+			element = itr.next();
+			if(!m2.inneholder(element))
+				((KjedetMengde<T>)mengde).settInn(element);
+		}
 
-		return differensM;
+		return mengde;
 	}
 
 	@Override
